@@ -52,7 +52,7 @@ When you want to send a message to a view via redirect, say to send a success me
       ->withMessage('Another thing you need to know.', 'info');
 
 ##Localized Messages##
-If your application is displayed in multiple languages, SimpleMessage provides a `withLangMessage()` method for redirecting with localized messages. Provide the key of the language line you wish to display, just as you would with [Laravel's `Lang::line()` method or `__()` function][lang_get].
+If your application is displayed in multiple languages, SimpleMessage provides a `withLangMessage()` method for redirecting with localized messages. Provide the key of the language line you wish to display, just as you would with [Laravel's `Lang::get()` method][lang_get].
 
 [lang_get]: http://four.laravel.com/docs/localization
 
