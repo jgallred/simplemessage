@@ -70,7 +70,6 @@ If your application is displayed in multiple languages, SimpleMessage provides a
 You can also pass messages directly to your views.
 
 ###Show a view with a message###
-Now you can also pass messages directly to your views.
 
     return View::make('item.list')
       ->withMessage('Your item was added.', 'success')
