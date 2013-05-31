@@ -66,6 +66,9 @@ If your application is displayed in multiple languages, SimpleMessage provides a
     return Redirect::to('item_list')
       ->withLangMessage('items.item_added', 'success');
 
+##Making Views with Messages##
+You can also pass messages directly to your views.
+
 ###Show a view with a message###
 Now you can also pass messages directly to your views.
 
