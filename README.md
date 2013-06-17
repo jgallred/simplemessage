@@ -1,5 +1,10 @@
 #Laravel SimpleMessage#
 
+####Preface####
+I created this package because I really like the original simplemessage and wanted to use it in a personal project. I still haven't converted the unit tests to Laravel 4 and I don't guarantee that there aren't inconsistencies with Laravel 4 patterns, which is one of the reasons I haven't published this to Packagist. I will happily fix things as I have time, but I'm in no rush. Sorry. 
+
+<hr/>
+
 SimpleMessage is a Laravel extension bundle that allows you to easily send messages to your views, centralizing your application's message system and keeping you nice and [DRY][dry].
 
 [dry]: http://en.wikipedia.org/wiki/Don't_repeat_yourself "Don't Repeat Yourself"
