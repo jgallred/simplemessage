@@ -2,12 +2,16 @@
 
 namespace Jgallred\Simplemessage\Messaging\Typed;
 
-//use Illuminate\Support\MessageBag;
+use Illuminate\Support\MessageBag;
+use Countable;
+use Illuminate\Support\Contracts\ArrayableInterface;
+use Illuminate\Support\Contracts\JsonableInterface;
+use Illuminate\Support\Contracts\MessageProviderInterface;
 
 /**
  * I tried to extend MessageBag, but all I would get are autoload errors
  */
-class Messages { // extends MessageBag {
+class Messages implements ArrayableInterface, Countable, JsonableInterface, MessageProviderInterface {//extends MessageBag {
 
     /**
      * Default key for messages that don't have a type
@@ -121,9 +125,9 @@ class Messages { // extends MessageBag {
      * @return Entry
      */
     public function first($key = null, $format = null) {
-		$messages = $this->get($key, $format);
+        $messages = $this->get($key, $format);
 
-		$message = (count($messages) > 0) ? $messages[0] : '';
+        $message = (count($messages) > 0) ? $messages[0] : '';
 
         return $message instanceof Entry ? $message : null;
     }
@@ -190,6 +194,105 @@ class Messages { // extends MessageBag {
         }
 
         return $transformed;
+    }
+
+
+    /** These methods were imported from MessageBag, since I can't seem to extend it
+     *
+     */
+
+    public function __construct(array $messages = array())
+    {
+        foreach ($messages as $key => $value)
+        {
+            $this->messages[$key] = (array) $value;
+        }
+    }
+
+    public function merge(array $messages)
+    {
+        $this->messages = array_merge_recursive($this->messages, $messages);
+
+        return $this;
+    }
+
+    protected function isUnique($key, $message)
+    {
+        $messages = (array) $this->messages;
+
+        return ! isset($messages[$key]) or ! in_array($message, $messages[$key]);
+    }
+
+    public function get($key, $format = null)
+    {
+        $format = $this->checkFormat($format);
+
+        // If the message exists in the container, we will transform it and return
+        // the message. Otherwise, we'll return an empty array since the entire
+        // methods is to return back an array of messages in the first place.
+        if (array_key_exists($key, $this->messages))
+        {
+            return $this->transform($this->messages[$key], $format, $key);
+        }
+
+        return array();
+    }
+
+    protected function checkFormat($format)
+    {
+        return ($format === null) ? $this->format : $format;
+    }
+
+    public function getMessages()
+    {
+        return $this->messages;
+    }
+
+    public function getMessageBag()
+    {
+        return $this;
+    }
+
+    public function getFormat()
+    {
+        return $this->format;
+    }
+
+    public function setFormat($format = ':message')
+    {
+        $this->format = $format;
+
+        return $this;
+    }
+
+    public function isEmpty()
+    {
+        return ! $this->any();
+    }
+
+    public function any()
+    {
+        return $this->count() > 0;
+    }
+
+    public function count()
+    {
+        return count($this->messages);
+    }
+
+    public function toArray()
+    {
+        return $this->getMessages();
+    }
+
+    public function toJson($options = 0)
+    {
+        return json_encode($this->toArray(), $options);
+    }
+
+    public function __toString()
+    {
+        return $this->toJson();
     }
 
 }
