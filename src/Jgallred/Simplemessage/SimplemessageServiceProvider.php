@@ -61,7 +61,7 @@ class SimplemessageServiceProvider extends ServiceProvider {
 			// for the quite convenient "with" methods that flash to the session.
 			if (isset($app['session']))
 			{
-				$redirector->setSession($app['session']);
+				$redirector->setSession($app['session.store']);
 			}
 
 			return $redirector;
