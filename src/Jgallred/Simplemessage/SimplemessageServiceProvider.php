@@ -55,7 +55,7 @@ class SimplemessageServiceProvider extends ServiceProvider
     {
         $this->app['redirect'] = $this->app->share(
             function ($app) {
-                $redirector = new Redirector($app['url']);
+                $redirector = new Redirector($app['url'], $app['translator']);
 
                 // If the session is set on the application instance, we'll inject it into
                 // the redirector instance. This allows the redirect responses to allow
