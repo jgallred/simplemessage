@@ -1,7 +1,7 @@
 #Laravel SimpleMessage#
 
 ####Preface####
-I created this package because I really like the original simplemessage and wanted to use it in a personal project. I still haven't converted the unit tests to Laravel 4 and I don't guarantee that there aren't inconsistencies with Laravel 4 patterns, which is one of the reasons I haven't published this to Packagist. I will happily fix things as I have time, but I'm in no rush. Sorry. 
+I created this package because I really like the original simplemessage and wanted to use it in a personal project, so I have it working for me. I will happily fix things as I have time, but I'm in no rush. Sorry.
 
 <hr/>
 
@@ -23,6 +23,9 @@ If you're familiar with [Laravel's validation error messages][validation], you'l
     }
 
 ##Installation##
+* Use v0.5 for Laravel 4.0
+* Use v1.0 for Laravel 4.1
+* Use v2.0 for Laravel 4.2
 
 You can install SimpleMessage through composer. Just add jgallred/simplemessage to your composer.json file.
 
