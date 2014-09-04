@@ -34,8 +34,9 @@ class RedirectResponse extends LaravelResponse
     public function withMessage($text, $type = '')
     {
         $messages = $this->session->get('messages', new TypedMessages);
+        /* @var $messages TypedMessages */
 
-        $messages->add_typed($text, $type);
+        $messages->addTyped($text, $type);
 
         $this->session->flash('messages', $messages);
 
