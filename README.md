@@ -1,4 +1,5 @@
 #Laravel SimpleMessage#
+[![Build Status](https://travis-ci.org/jgallred/simplemessage.svg?branch=master)](https://travis-ci.org/jgallred/simplemessage)
 
 ####Preface####
 I created this package because I really like the original simplemessage and wanted to use it in a personal project, so I have it working for me. I will happily fix things as I have time, but I'm in no rush. Sorry.
