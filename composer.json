@@ -26,8 +26,7 @@
     },
     "require-dev": {
         "phpunit/phpunit": "4.2.*",
-        "mockery/mockery": "dev-master",
-        "hamcrest/hamcrest-php": "dev-master"
+        "mockery/mockery": "dev-master"
     },
     "autoload": {
         "psr-0": {
