@@ -60,7 +60,7 @@ class SimplemessageServiceProvider extends ServiceProvider
                 // If the session is set on the application instance, we'll inject it into
                 // the redirector instance. This allows the redirect responses to allow
                 // for the quite convenient "with" methods that flash to the session.
-                if (isset($app['session'])) {
+                if (isset($app['session.store'])) {
                     $redirector->setSession($app['session.store']);
                 }
 
@@ -76,7 +76,8 @@ class SimplemessageServiceProvider extends ServiceProvider
      */
     public function registerFactory()
     {
-        $this->app['view'] = $this->app->share(
+        $this->app->bindShared(
+            'view',
             function ($app) {
                 // Next we need to grab the engine resolver instance that will be used by the
                 // environment. The resolver will be used by an environment to get each of

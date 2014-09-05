@@ -23,7 +23,7 @@ class ViewTest extends TestCase
     private $mock_engine_resolver;
 
     /**
-     * @var \Mockery\Mock|\Illuminate\View\ViewFinderInterface
+     * @var \Mockery\Mock|\Illuminate\Contracts\Events\Dispatcher
      */
     private $mock_view_finder;
 
@@ -45,7 +45,7 @@ class ViewTest extends TestCase
         $this->mock_engine_resolver = Mockery::mock('Illuminate\View\Engines\EngineResolver')->shouldIgnoreMissing();
         $this->mock_translator = Mockery::mock('\Illuminate\Translation\Translator')->shouldIgnoreMissing();
         $this->mock_session = Mockery::mock('\Illuminate\Session\Store')->shouldIgnoreMissing();
-        $this->mock_dispatcher = Mockery::mock('\Illuminate\Events\Dispatcher')->shouldIgnoreMissing();
+        $this->mock_dispatcher = Mockery::mock('\Illuminate\Contracts\Events\Dispatcher')->shouldIgnoreMissing();
 
         $this->mock_engine_resolver->shouldReceive('resolve')
             ->andReturn(Mockery::mock('\Illuminate\View\Engines\EngineInterface')->shouldIgnoreMissing());

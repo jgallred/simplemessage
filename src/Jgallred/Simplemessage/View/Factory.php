@@ -1,6 +1,6 @@
 <?php namespace Jgallred\Simplemessage\View;
 
-use Illuminate\Events\Dispatcher;
+use Illuminate\Contracts\Events\Dispatcher;
 use Illuminate\Session\Store;
 use Illuminate\Translation\Translator;
 use Illuminate\View\Engines\EngineResolver;

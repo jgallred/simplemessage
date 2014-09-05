@@ -18,10 +18,10 @@
         }
     ],
     "require": {
-        "illuminate/support": "4.2.*",
-        "illuminate/view": "4.2.*",
-        "illuminate/routing": "4.2.*",
-        "illuminate/translation": "4.2.*"
+        "illuminate/support": "4.3.*",
+        "illuminate/view": "4.3.*",
+        "illuminate/routing": "4.3.*",
+        "illuminate/translation": "4.3.*"
 
     },
     "require-dev": {
