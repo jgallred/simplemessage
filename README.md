@@ -27,6 +27,7 @@ If you're familiar with [Laravel's validation error messages][validation], you'l
 * Use v0.5 for Laravel 4.0
 * Use v1.0 for Laravel 4.1
 * Use v2.0 for Laravel 4.2
+* Use v3.0 for Laravel 4.3
 
 You can install SimpleMessage through composer. Just add jgallred/simplemessage to your composer.json file.
 
