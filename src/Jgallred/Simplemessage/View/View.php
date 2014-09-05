@@ -77,7 +77,7 @@ class View extends LaravelView
     public function withMessage($text, $type = '')
     {
         if (isset($this->data[$this->messages_key])) {
-            $this->data[$this->messages_key]->add_typed($text, $type);
+            $this->data[$this->messages_key]->addTyped($text, $type);
         }
 
         return $this;
