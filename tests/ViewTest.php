@@ -78,7 +78,7 @@ class ViewTest extends TestCase
     /**
      * @test
      */
-    public function views_should_flashed_message_container_if_available()
+    public function views_should_use_flashed_message_container_if_available()
     {
         $this->mock_view_finder->shouldReceive('find')->andReturn('home/index.php');
 
@@ -93,5 +93,28 @@ class ViewTest extends TestCase
 
         $this->assertEquals($messages, $view->getData()['messages']);
         $this->assertNotEmpty($messages);
+    }
+
+    /**
+     * @test
+     */
+    public function views_should_add_message_to_container()
+    {
+        $this->mock_view_finder->shouldReceive('find')->andReturn('home/index.php');
+
+        $messages = new \Jgallred\Simplemessage\Messaging\Typed\Messages();
+        $messages->addTyped("Test");
+
+        $this->mock_session->shouldReceive('isStarted')->andReturn(true);
+        $this->mock_session->shouldReceive('has')->with('messages')->andReturn(true);
+        $this->mock_session->shouldReceive('get')->atLeast(1)->with('messages')->andReturn($messages);
+
+        $view = $this->factory->make('home.index');
+
+        $view->withMessage('Test2');
+
+        $this->assertEquals($messages, $view->getData()['messages']);
+        $this->assertNotEmpty($messages);
+        $this->assertCount(2, $messages);
     }
 }
